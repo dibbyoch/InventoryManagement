@@ -8,7 +8,7 @@ fd = open("Records.json",'r')
 js = fd.read()
 fd.close()
 records = json.loads(js)
-Load and display the current inventory using Streamlit
+#Load and display the current inventory using Streamlit
 st.write("--------------- MENU ----------------")
 
 
