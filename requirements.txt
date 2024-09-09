@@ -1,0 +1,7 @@
+streamlit
+pandas
+JSON
+sqllite3
+time
+random
+requests
