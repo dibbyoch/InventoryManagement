@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import sqlite3
 from ETL_process import display_sql_table
-Function to load inventory data from JSON
+#Function to load inventory data from JSON
 fd = open("Records.json",'r')
 js = fd.read()
 fd.close()
@@ -12,7 +12,7 @@ Load and display the current inventory using Streamlit
 st.write("--------------- MENU ----------------")
 
 
-Create table to display inventory
+#Create table to display inventory
 inventory_table = []
 for key, item in records.items():
     inventory_table.append([key, item['Name'], item['Price'], item['Product_ID'], item['Quantity']])
@@ -28,7 +28,7 @@ Userinput_name = st.text_input("Enter your Name:")
 Userinput_number = st.text_input("Enter your Mobile Number:")
 Userinput_country = st.text_input("Enter your Country:")
 
- Button to submit purchase
+# Button to submit purchase
 if st.button("Submit Purchase"):
     # Call process_purchase function
     result, transaction_id, billing_amount = process_purchase(
