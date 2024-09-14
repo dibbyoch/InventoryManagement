@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import sqlite3
 from ETL_process import display_sql_table
+from inventory_management import process_purchase
 #Function to load inventory data from JSON
 fd = open("Records.json",'r')
 js = fd.read()
