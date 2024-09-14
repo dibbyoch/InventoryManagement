@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 #modified code with excess products purchsed to avaid negative inventory count
 #opening the records json file
