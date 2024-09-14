@@ -13,7 +13,7 @@ import random
 from ETL_process import update_database
 
 def process_purchase(userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country, proceed_with_max_quantity=False):
-    fd = open("Records.json",'r')
+    fd = open('Records.json','r')
     js = fd.read()
     fd.close()
     records = json.loads(js)
@@ -60,22 +60,18 @@ def process_purchase(userinput_productid, userinput_quantity, Userinput_name, Us
     
     #opening the file for updating the json records inrecords.json
     js = json.dumps(records)
-    fd = open('C:/Users/PlethoraX/Desktop/Records.json','w')
+    fd = open('Records.json','w')
     fd.write(js)
     fd.close()
     
     #sales file updation
     ss = json.dumps(sales_record, indent=4)
-    sd = open('C:/Users/PlethoraX/Desktop/sales.json', 'w')
+    sd = open('sales.json', 'w')
     sd.write(ss)
     sd.close()
     
     update_database()
     return True, transaction_id, billing_amount
-
-
-# In[ ]:
-
 
 
 
