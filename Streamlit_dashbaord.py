@@ -60,37 +60,33 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
-# Custom CSS for the rainbow hover effect button
+# Custom CSS for the button hover effect
 st.markdown("""
     <style>
-    .green-button {
+    .styled-button {
         display: inline-block;
         padding: 10px 20px;
         font-size: 16px;
         font-weight: bold;
-        color: white;
-        background-color: #4CAF50; /* Default green color */
-        border: none;
+        color: black;
+        background-color: white;
+        border: 2px solid black;
         border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s, color 0.3s;
     }
     
-    .green-button:hover {
-        background-color: #45a049; /* Darker green on hover */
-    }
-    
-    .button-container {
-        text-align: center;
-        margin-top: 20px;
+    .styled-button:hover {
+        background-color: green;
+        color: white;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Button with green hover effect
-if st.markdown('<div class="button-container"><button class="green-button">Show Sales Data</button></div>', unsafe_allow_html=True):
-    if st.button("Show Sales Data"):
-        display_sql_table()
+# Button with the hover effect
+if st.markdown('<button class="styled-button">Show Sales Data</button>', unsafe_allow_html=True):
+    display_sql_table()
+
 # Clear sales table button
 if st.button("Clear sales table"):
     clear_sales_records()
