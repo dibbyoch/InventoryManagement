@@ -115,7 +115,7 @@ def display_sql_table():
     conn.close()
 
 def clear_sales_records():
-    conn = sqltite3.connect('inventory_management.db')
+    conn = sqlite3.connect('inventory_management.db')
     cursor = conn.cursor()
     cursor.execute('DELETE FROM Sales')
     conn.commit()
