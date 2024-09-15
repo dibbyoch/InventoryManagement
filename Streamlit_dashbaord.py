@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import sqlite3
-from ETL_process import display_sql_table,clear_sales_data
+from ETL_process import display_sql_table,clear_sales_records
 from inventory_management import process_purchase
 #Function to load inventory data from JSON
 fd = open("Records.json",'r')
