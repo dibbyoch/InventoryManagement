@@ -114,3 +114,13 @@ def display_sql_table():
     st.table(df)
     conn.close()
 
+def clear_sales_records():
+    conn = sqltite3.connect('inventory_management.db')
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM Sales')
+    conn.commit()
+    conn.close()
+    st.success("Sales records have been cleared.")
+
+    
+
