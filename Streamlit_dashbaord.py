@@ -91,8 +91,8 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Button with rainbow hover effect
-if st.markdown('<div class="rainbow-button-container"><button class="rainbow-button">Show Sales Data</button></div>', unsafe_allow_html=True):
-    if st.button("Show Sales Data"):
+if st.markdown('<div class="rainbow-button-container"><button class="rainbow-button" id="show-sales-btn">Show Sales Data</button></div>', unsafe_allow_html=True):
+    if st.experimental_get_query_params().get("show_sales") == ["true"]:
         display_sql_table()
 
 # Clear sales table button
