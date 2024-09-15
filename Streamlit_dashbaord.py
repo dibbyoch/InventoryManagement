@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import sqlite3
+import streamlit_extras
 from streamlit_extras.colored_header import colored_header
 from ETL_process import display_sql_table,clear_sales_records
 from inventory_management import process_purchase
