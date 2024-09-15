@@ -2,17 +2,18 @@ import streamlit as st
 import pandas as pd
 import json
 import sqlite3
-from ETL_process import display_sql_table, clear_sales_records
+from ETL_process import display_sql_table,clear_sales_records
 from inventory_management import process_purchase
-
-# Function to load inventory data from JSON
-with open("Records.json", 'r') as fd:
-    records = json.load(fd)
-
-# Load and display the current inventory using Streamlit
+#Function to load inventory data from JSON
+fd = open("Records.json",'r')
+js = fd.read()
+fd.close()
+records = json.loads(js)
+#Load and display the current inventory using Streamlit
 st.write("--------------- MENU ----------------")
 
-# Create table to display inventory
+
+#Create table to display inventory
 inventory_table = []
 for key, item in records.items():
     inventory_table.append([key, item['Name'], item['Price'], item['Product_ID'], item['Quantity']])
@@ -28,35 +29,8 @@ Userinput_name = st.text_input("Enter your Name:")
 Userinput_number = st.text_input("Enter your Mobile Number:")
 Userinput_country = st.text_input("Enter your Country:")
 
-# Custom CSS for button colors
-st.markdown("""
-    <style>
-    .blue-button {
-        background-color: blue;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-    
-    .green-button {
-        background-color: green;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
 # Button to submit purchase
-if st.markdown('<button class="blue-button">Submit Purchase</button>', unsafe_allow_html=True):
+if st.button("Submit Purchase"):
     # Call process_purchase function
     result, transaction_id, billing_amount = process_purchase(
         userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country
@@ -83,14 +57,11 @@ if st.markdown('<button class="blue-button">Submit Purchase</button>', unsafe_al
                 st.success(f"Purchase Successful with available quantity! Transaction ID: {transaction_id}")
                 st.write(f"Total Amount: {billing_amount} Rupees")
             else:
-                st.error(f"An error occurred while processing your purchase, because there are {transaction_id} products")
+                st.error(f"An error occurred while processing your purchase, because the is {transaction_id} products")
     else:
         st.error("Invalid Product ID")
 
-# Button to show sales data
-if st.markdown('<button class="green-button">Show Sales Data</button>', unsafe_allow_html=True):
+if st.button("Show Sales Data"):
     display_sql_table()
-
-# Clear sales table button
 if st.button("Clear sales table"):
     clear_sales_records()
