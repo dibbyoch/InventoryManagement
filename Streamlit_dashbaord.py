@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import sqlite3
-from ETL_process import display_sql_table
+from ETL_process import display_sql_table,clear_sales_data
 from inventory_management import process_purchase
 #Function to load inventory data from JSON
 fd = open("Records.json",'r')
@@ -62,4 +62,7 @@ if st.button("Submit Purchase"):
         st.error("Invalid Product ID")
 
 if st.button("Show Sales Data"):
-    display_sql_table()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    display_sql_table() 
+
+if st.button("Clear sales table"):
+    clear_sales_data()
