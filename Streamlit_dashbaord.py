@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import sqlite3
 import streamlit_extras
-from streamlit_extras.colored_header import colored_header
+from streamlit_extras.customize_button import button
 from ETL_process import display_sql_table,clear_sales_records
 from inventory_management import process_purchase
 #Function to load inventory data from JSON
@@ -63,15 +63,13 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
-colored_header(
-    label="Show Sales Data",
-    description="Click to confirm your purchase.",
-    color_name="blue-70",  # You can change this to your preferred color
-)
+clicked = button('Show Sales Data', button_color="blue", text_color="white")
 
-
-
-if st.button("Show Sales Data"):
+if clicked:
     display_sql_table()
+
+
+#if st.button("Show Sales Data"):
+    #display_sql_table()
 if st.button("Clear sales table"):
     clear_sales_records()
