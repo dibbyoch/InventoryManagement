@@ -65,4 +65,4 @@ if st.button("Show Sales Data"):
     display_sql_table() 
 
 if st.button("Clear sales table"):
-    clear_sales_data()
+    clear_sales_records()
