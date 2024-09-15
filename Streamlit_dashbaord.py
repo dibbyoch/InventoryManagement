@@ -63,35 +63,34 @@ if st.button("Submit Purchase"):
 # Custom CSS for the rainbow hover effect button
 st.markdown("""
     <style>
-    .rainbow-button {
+    .green-button {
         display: inline-block;
         padding: 10px 20px;
         font-size: 16px;
         font-weight: bold;
         color: white;
-        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        background-color: #4CAF50; /* Default green color */
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        transition: background-position 1s ease;
-        background-size: 400%;
+        transition: background-color 0.3s ease;
     }
     
-    .rainbow-button:hover {
-        background-position: 1000%;
+    .green-button:hover {
+        background-color: #45a049; /* Darker green on hover */
     }
     
-    .rainbow-button-container {
+    .button-container {
         text-align: center;
         margin-top: 20px;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Button with rainbow hover effect
-if st.button("Show Sales Data"):
-    display_sql_table()
-
+# Button with green hover effect
+if st.markdown('<div class="button-container"><button class="green-button">Show Sales Data</button></div>', unsafe_allow_html=True):
+    if st.button("Show Sales Data"):
+        display_sql_table()
 # Clear sales table button
 if st.button("Clear sales table"):
     clear_sales_records()
