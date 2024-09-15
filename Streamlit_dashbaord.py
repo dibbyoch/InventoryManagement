@@ -90,10 +90,18 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Button with the rainbow effect
-st.markdown('<div class="rainbow-button-container"><button class="rainbow-button">Show Sales Data</button></div>', unsafe_allow_html=True)
+button_html = """
+<div class="rainbow-button-container">
+    <form action="#">
+        <input type="submit" class="rainbow-button" value="Show Sales Data"/>
+    </form>
+</div>
+"""
 
-if st.button("Show Sales Data"):
-    display_sql_table() 
+# Render the rainbow button and check for interaction
+st.markdown(button_html, unsafe_allow_html=True)
 
+if st.form_submit_button("Show Sales Data"):
+    display_sql_table()
 if st.button("Clear sales table"):
     clear_sales_records()
