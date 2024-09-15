@@ -61,30 +61,6 @@ if st.button("Submit Purchase"):
         st.error("Invalid Product ID")
 
 # Custom CSS for the button hover effect
-st.markdown("""
-    <style>
-    .custom-button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: black;
-        background-color: white;
-        border: 2px solid black;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    
-    .custom-button:hover {
-        background-color: green;
-        color: white;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# Use st.markdown with HTML to simulate the button
-show_sales_data = st.markdown('<button class="custom-button">Show Sales Data</button>', unsafe_allow_html=True)
 
 # Check if the button was clicked
 if st.button("Show Sales Data"):
