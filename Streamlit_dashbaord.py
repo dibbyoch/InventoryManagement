@@ -63,7 +63,7 @@ if st.button("Submit Purchase"):
 # Custom CSS for the button hover effect
 st.markdown("""
     <style>
-    .styled-button {
+    .custom-button {
         display: inline-block;
         padding: 10px 20px;
         font-size: 16px;
@@ -76,15 +76,18 @@ st.markdown("""
         transition: background-color 0.3s, color 0.3s;
     }
     
-    .styled-button:hover {
+    .custom-button:hover {
         background-color: green;
         color: white;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Button with the hover effect
-if st.markdown('<button class="styled-button">Show Sales Data</button>', unsafe_allow_html=True):
+# Use st.markdown with HTML to simulate the button
+show_sales_data = st.markdown('<button class="custom-button">Show Sales Data</button>', unsafe_allow_html=True)
+
+# Check if the button was clicked
+if st.button("Show Sales Data"):
     display_sql_table()
 
 # Clear sales table button
