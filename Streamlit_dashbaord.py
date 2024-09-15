@@ -6,10 +6,8 @@ from ETL_process import display_sql_table, clear_sales_records
 from inventory_management import process_purchase
 
 # Function to load inventory data from JSON
-fd = open("Records.json", 'r')
-js = fd.read()
-fd.close()
-records = json.loads(js)
+with open("Records.json", 'r') as fd:
+    records = json.load(fd)
 
 # Load and display the current inventory using Streamlit
 st.write("--------------- MENU ----------------")
@@ -58,7 +56,7 @@ if st.button("Submit Purchase"):
                 st.success(f"Purchase Successful with available quantity! Transaction ID: {transaction_id}")
                 st.write(f"Total Amount: {billing_amount} Rupees")
             else:
-                st.error(f"An error occurred while processing your purchase, because the is {transaction_id} products")
+                st.error(f"An error occurred while processing your purchase, because there are {transaction_id} products")
     else:
         st.error("Invalid Product ID")
 
@@ -91,9 +89,8 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Button with rainbow hover effect
-if st.markdown('<div class="rainbow-button-container"><button class="rainbow-button" id="show-sales-btn">Show Sales Data</button></div>', unsafe_allow_html=True):
-    if st.experimental_get_query_params().get("show_sales") == ["true"]:
-        display_sql_table()
+if st.button("Show Sales Data"):
+    display_sql_table()
 
 # Clear sales table button
 if st.button("Clear sales table"):
