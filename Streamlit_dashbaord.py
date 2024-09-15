@@ -28,8 +28,35 @@ Userinput_name = st.text_input("Enter your Name:")
 Userinput_number = st.text_input("Enter your Mobile Number:")
 Userinput_country = st.text_input("Enter your Country:")
 
+# Custom CSS for button colors
+st.markdown("""
+    <style>
+    .blue-button {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    
+    .green-button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Button to submit purchase
-if st.button("Submit Purchase"):
+if st.markdown('<button class="blue-button">Submit Purchase</button>', unsafe_allow_html=True):
     # Call process_purchase function
     result, transaction_id, billing_amount = process_purchase(
         userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country
@@ -60,10 +87,8 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
-# Custom CSS for the button hover effect
-
-# Check if the button was clicked
-if st.button("Show Sales Data"):
+# Button to show sales data
+if st.markdown('<button class="green-button">Show Sales Data</button>', unsafe_allow_html=True):
     display_sql_table()
 
 # Clear sales table button
