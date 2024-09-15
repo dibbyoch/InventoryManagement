@@ -61,6 +61,37 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
+
+st.markdown("""
+    <style>
+    .rainbow-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-position 1s ease;
+        background-size: 400%;
+    }
+    
+    .rainbow-button:hover {
+        background-position: 1000%;
+    }
+    
+    .rainbow-button-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Button with the rainbow effect
+st.markdown('<div class="rainbow-button-container"><button class="rainbow-button">Show Sales Data</button></div>', unsafe_allow_html=True)
+
 if st.button("Show Sales Data"):
     display_sql_table() 
 
