@@ -79,8 +79,8 @@ button_style = """
 # Inject your custom CSS
 st.markdown(button_style, unsafe_allow_html=True)
 
-    if st.button("Show Sales Data"):
-        display_sql_table()
+if st.button("Show Sales Data"):
+    display_sql_table()
 
 
    # if st.button("Clear Sales Data"):
