@@ -21,18 +21,44 @@ for key, item in records.items():
     inventory_table.append([key, item['Name'], item['Price'], item['Product_ID'], item['Quantity']])
 
 # Display inventory in table format
-if st.button("Check Inventory"):
-    st.table(pd.DataFrame(inventory_table, columns=["Product ID", "Name", "Price", "Product Code", "Quantity"]))
 
-# User inputs for the purchase
+    # User inputs for the purchase
 userinput_productid = st.text_input("Enter Product ID:")
 userinput_quantity = st.number_input("Enter Quantity:", min_value=1, step=1)
 Userinput_name = st.text_input("Enter your Name:")
 Userinput_number = st.text_input("Enter your Mobile Number:")
 Userinput_country = st.text_input("Enter your Country:")
 
-# Button to submit purchase
-if st.button("Submit Purchase"):
+
+
+
+
+# Define your custom CSS
+button_styles = """
+    <style>
+    div.stButton:nth-of-type(1) button {  /* First button (Check Inventory) */
+        background-color: #800080;
+        color: white;
+    }
+    div.stButton:nth-of-type(2) button {  /* Second button (Submit Purchase) */
+        background-color: #FF4500;
+        color: white;
+    }
+    div.stButton:nth-of-type(3) button {  /* Third button (Show Sales Data) */
+        background-color: #008CBA;
+        color: white;
+    }
+    </style>
+"""
+
+# Inject custom styles
+st.markdown(button_styles, unsafe_allow_html=True)
+
+# Button examples with keys
+if st.button("Check Inventory", key="check_inventory"):
+    st.table(pd.DataFrame(inventory_table, columns=["Product ID", "Name", "Price", "Product Code", "Quantity"]))
+
+if st.button("Submit Purchase", key="submit_purchase"):
     # Call process_purchase function
     result, transaction_id, billing_amount = process_purchase(
         userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country
@@ -63,31 +89,10 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
-
-
-
-# Define your custom CSS
-button_style = """
-    <style>
-    div.stButton > button {
-        background-color: #800080;
-        color: white;
-        font-size: 16px;
-        padding: 10px 24px;
-        border-radius: 10px;
-        border: none;
-    }
-    div.stButton > button:hover {
-        background-color: #5a005a;
-    }
-    </style>
-"""
-
-# Inject the CSS into the Streamlit app
-st.markdown(button_style, unsafe_allow_html=True)
-
-# Button to show sales data
-if st.button("Show Sales Data"):
+if st.button("Show Sales Data", key="show_sales_data"):
     display_sql_table()
-if st.button("Clear Sales Data"):
-    clear_sales_records()
+
+
+    
+#if st.button("Clear Sales Data"):
+    #clear_sales_records()
