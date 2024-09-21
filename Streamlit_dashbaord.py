@@ -78,11 +78,11 @@ button_css = """
 <style>
     div[data-baseweb="button"] div:nth-child(1) button {
         background-color: #00FF00 !important;
-        color: white !important;
+        color: blue !important;
     }
     div[data-baseweb="button"] div:nth-child(2) button {
         background-color: #FF0000 !important;
-        color: white !important;
+        color: green !important;
     }
 </style>
 """
