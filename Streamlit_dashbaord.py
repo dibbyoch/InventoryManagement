@@ -71,3 +71,25 @@ if st.button("Show Sales Data"):
 
 if st.button("Clear Sales Data"):
     clear_sales_records()
+
+
+
+button_css = """
+<style>
+    div[data-baseweb="button"] div:nth-child(1) button {
+        background-color: #00FF00 !important;
+        color: white !important;
+    }
+    div[data-baseweb="button"] div:nth-child(2) button {
+        background-color: #FF0000 !important;
+        color: white !important;
+    }
+</style>
+"""
+
+# Inject your custom CSS
+st.markdown(button_css, unsafe_allow_html=True)
+
+# Create your buttons
+button1_clicked = st.button("Button 1", key="button1")
+button2_clicked = st.button("Button 2", key="button2")
