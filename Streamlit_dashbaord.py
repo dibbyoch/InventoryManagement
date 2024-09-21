@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import sqlite3
 import streamlit_extras
-from streamlit_extras.customize_button import button
+
 from ETL_process import display_sql_table,clear_sales_records
 from inventory_management import process_purchase
 #Function to load inventory data from JSON
@@ -63,13 +63,11 @@ if st.button("Submit Purchase"):
     else:
         st.error("Invalid Product ID")
 
-clicked = button('Show Sales Data', button_color="blue", text_color="white")
 
-if clicked:
+
+if st.button("Show Sales Data"):
     display_sql_table()
 
 
-#if st.button("Show Sales Data"):
-    #display_sql_table()
-if st.button("Clear sales table"):
+if st.button("Clear Sales Data"):
     clear_sales_records()
