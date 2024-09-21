@@ -89,5 +89,5 @@ st.markdown(button_style, unsafe_allow_html=True)
 # Button to show sales data
 if st.button("Show Sales Data"):
     display_sql_table()
- if st.button("Clear Sales Data"):
+if st.button("Clear Sales Data"):
     clear_sales_records()
