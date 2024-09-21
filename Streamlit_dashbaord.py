@@ -68,20 +68,26 @@ if st.button("Submit Purchase"):
 
 # Define your custom CSS
 button_style = """
-<style>
-    div[data-baseweb="button"] div:nth-child(1) button {{
-        background-color: #800080 !important;  # Purple color
-        color: white !important;
-    }}
-</style>
+    <style>
+    div.stButton > button {
+        background-color: #800080;
+        color: white;
+        font-size: 16px;
+        padding: 10px 24px;
+        border-radius: 10px;
+        border: none;
+    }
+    div.stButton > button:hover {
+        background-color: #5a005a;
+    }
+    </style>
 """
 
-# Inject your custom CSS
+# Inject the CSS into the Streamlit app
 st.markdown(button_style, unsafe_allow_html=True)
 
+# Button to show sales data
 if st.button("Show Sales Data"):
     display_sql_table()
-
-
-   # if st.button("Clear Sales Data"):
-       # clear_sales_records()
+ if st.button("Clear Sales Data"):
+    clear_sales_records()
