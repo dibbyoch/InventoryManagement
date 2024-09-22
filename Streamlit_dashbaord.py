@@ -19,6 +19,14 @@ inventory_table = []
 for key, item in records.items():
     inventory_table.append([key, item['Name'], item['Price'], item['Product_ID'], item['Quantity']])
 
+
+# User inputs for the purchase
+userinput_productid = st.text_input("Enter Product ID:")
+userinput_quantity = st.number_input("Enter Quantity:", min_value=1, step=1)
+Userinput_name = st.text_input("Enter your Name:")
+Userinput_number = st.text_input("Enter your Mobile Number:")
+Userinput_country = st.text_input("Enter your Country:")
+
 # Define your custom CSS for buttons within containers
 button_styles = """
     <style>
@@ -47,13 +55,7 @@ with st.container():
 
 with st.container():
     if st.button("Submit Purchase"):
-        # User inputs for the purchase
-        userinput_productid = st.text_input("Enter Product ID:")
-        userinput_quantity = st.number_input("Enter Quantity:", min_value=1, step=1)
-        Userinput_name = st.text_input("Enter your Name:")
-        Userinput_number = st.text_input("Enter your Mobile Number:")
-        Userinput_country = st.text_input("Enter your Country:")
-
+        
         # Call process_purchase function
         result, transaction_id, billing_amount = process_purchase(
             userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country
