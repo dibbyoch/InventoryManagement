@@ -39,14 +39,7 @@ button_styles = """
         background-color: #800080;
         color: white;
     }
-    div[data-testid="stButton"] > button[data-testid="submit_purchase"] {
-        background-color: #FF4500;
-        color: white;
-    }
-    div[data-testid="stButton"] > button[data-testid="show_sales_data"] {
-        background-color: #008CBA;
-        color: white;
-    }
+    
     </style>
 """
 
