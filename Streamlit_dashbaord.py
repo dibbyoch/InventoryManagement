@@ -32,19 +32,18 @@ Userinput_country = st.text_input("Enter your Country:")
 
 
 
-
-# Define your custom CSS
+# Define your custom CSS for buttons based on their keys
 button_styles = """
     <style>
-    div.stButton:nth-of-type(1) button {  /* First button (Check Inventory) */
+    div[data-testid="stButton"] > button[data-testid="check_inventory"] {
         background-color: #800080;
         color: white;
     }
-    div.stButton:nth-of-type(2) button {  /* Second button (Submit Purchase) */
+    div[data-testid="stButton"] > button[data-testid="submit_purchase"] {
         background-color: #FF4500;
         color: white;
     }
-    div.stButton:nth-of-type(3) button {  /* Third button (Show Sales Data) */
+    div[data-testid="stButton"] > button[data-testid="show_sales_data"] {
         background-color: #008CBA;
         color: white;
     }
@@ -59,6 +58,13 @@ if st.button("Check Inventory", key="check_inventory"):
     st.table(pd.DataFrame(inventory_table, columns=["Product ID", "Name", "Price", "Product Code", "Quantity"]))
 
 if st.button("Submit Purchase", key="submit_purchase"):
+    # User inputs for the purchase
+    userinput_productid = st.text_input("Enter Product ID:")
+    userinput_quantity = st.number_input("Enter Quantity:", min_value=1, step=1)
+    Userinput_name = st.text_input("Enter your Name:")
+    Userinput_number = st.text_input("Enter your Mobile Number:")
+    Userinput_country = st.text_input("Enter your Country:")
+
     # Call process_purchase function
     result, transaction_id, billing_amount = process_purchase(
         userinput_productid, userinput_quantity, Userinput_name, Userinput_number, Userinput_country
@@ -85,14 +91,12 @@ if st.button("Submit Purchase", key="submit_purchase"):
                 st.success(f"Purchase Successful with available quantity! Transaction ID: {transaction_id}")
                 st.write(f"Total Amount: {billing_amount} Rupees")
             else:
-                st.error(f"An error occurred while processing your purchase, because the is {transaction_id} products")
+                st.error(f"An error occurred while processing your purchase, because there are only {transaction_id} products")
     else:
         st.error("Invalid Product ID")
 
 if st.button("Show Sales Data", key="show_sales_data"):
     display_sql_table()
-
-
     
 #if st.button("Clear Sales Data"):
     #clear_sales_records()
